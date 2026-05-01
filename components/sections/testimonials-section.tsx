@@ -30,7 +30,7 @@ export function TestimonialsSection() {
     <section
       id="reviews"
       aria-label="Отзывы участниц"
-      className="section-pad bg-brand-cream text-brand-blue"
+      className="section-pad bg-cream-dark text-charcoal"
     >
       <div className="site-shell">
         <motion.span
@@ -48,7 +48,7 @@ export function TestimonialsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.1 }}
-          className="mega-title mt-8 max-w-3xl font-display text-brand-blue sm:mt-10"
+          className="mega-title mt-8 max-w-3xl font-display text-wine sm:mt-10"
         >
           Что говорят участницы
         </motion.h2>
@@ -61,24 +61,25 @@ export function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: 0.08 * index }}
-              className="border-l-[2px] border-brand-yellow py-8 pl-7 sm:py-10 sm:pl-8"
+              className="invitation-card px-6 py-8 sm:px-7 sm:py-10"
+              style={{ transform: index % 2 === 0 ? "rotate(-0.5deg)" : "rotate(0.5deg)" }}
             >
               <span
                 aria-hidden
-                className="font-serif text-6xl leading-none text-brand-yellow/70 sm:text-7xl"
+                className="font-serif text-5xl leading-none text-wine/40 sm:text-6xl"
               >
                 &ldquo;
               </span>
-              <blockquote className="mt-3">
-                <p className="font-serif text-xl font-medium leading-relaxed text-brand-ink sm:text-2xl">
+              <blockquote className="mt-2">
+                <p className="font-serif italic text-lg font-medium leading-relaxed text-charcoal sm:text-xl">
                   {review.text}
                 </p>
               </blockquote>
-              <footer className="mt-6">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-brand-ink">
+              <footer className="mt-6 border-t border-wine/10 pt-5">
+                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-wine">
                   {review.name}
                 </p>
-                <p className="mt-1.5 text-[0.65rem] uppercase tracking-[0.14em] text-brand-ink/45">
+                <p className="mt-1 text-[0.6rem] uppercase tracking-[0.14em] text-warm-gray">
                   {review.role}
                 </p>
               </footer>

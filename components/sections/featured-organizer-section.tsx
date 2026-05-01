@@ -7,7 +7,7 @@ export function FeaturedOrganizerSection() {
   return (
     <section
       aria-label="Один из организаторов встречи - Keratin Madrid"
-      className="section-pad relative overflow-hidden bg-brand-cream text-brand-blue"
+      className="section-pad relative overflow-hidden bg-cream text-charcoal"
     >
       <div className="site-shell">
         {/* Section number */}
@@ -39,7 +39,7 @@ export function FeaturedOrganizerSection() {
                 className="editorial-photo object-cover object-top transition-transform duration-1000 hover:scale-[1.02]"
               />
             </div>
-            <p className="mt-4 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-brand-blue/55">
+            <p className="mt-4 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-warm-gray">
               Елена Александрова · Founder · Keratin Madrid
             </p>
           </motion.div>
@@ -52,14 +52,14 @@ export function FeaturedOrganizerSection() {
             transition={{ duration: 1, delay: 0.1 }}
             className="flex flex-col justify-center"
           >
-            <h2 className="display-mega font-display text-brand-blue">
+            <h2 className="display-mega font-display text-wine">
               Keratin<span className="lg:hidden"><br /></span><span className="hidden lg:inline"> </span>Madrid
               <span className="sm:hidden"><br /></span>
-              <span className="text-brand-butter"> × </span>
-              <span className="text-brand-butter">Soy Ella</span>
+              <span className="text-gold-muted"> × </span>
+              <span className="text-gold-muted">Soy Ella</span>
             </h2>
 
-            <p className="mt-10 max-w-lg text-base leading-relaxed text-brand-ink/65 sm:text-lg">
+            <p className="mt-10 max-w-lg text-base leading-relaxed text-charcoal/60 sm:text-lg">
               Keratin Madrid является одним из организаторов сообщества Soy Ella. Елена Александрова отвечает за экспертную программу и представит на встрече систему домашнего профессионального восстановления волос для девушек, которые ценят качество и время.
             </p>
 
@@ -68,7 +68,7 @@ export function FeaturedOrganizerSection() {
                 href="https://www.instagram.com/curso_keratin_madrid/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full items-center justify-center rounded-full bg-brand-blue px-5 py-4 text-center text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-brand-cream transition-all duration-300 hover:bg-brand-blue-deep sm:w-auto sm:px-8 sm:text-[0.7rem] sm:tracking-[0.2em]"
+                className="inline-flex w-full items-center justify-center rounded-full bg-wine px-5 py-4 text-center text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-cream transition-all duration-300 hover:bg-wine-light sm:w-auto sm:px-8 sm:text-[0.7rem] sm:tracking-[0.2em]"
               >
                 Instagram Keratin Madrid
               </a>
@@ -76,7 +76,7 @@ export function FeaturedOrganizerSection() {
                 href="https://www.instagram.com/curso_keratin_madrid/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full items-center justify-center rounded-full border border-brand-blue/30 bg-transparent px-5 py-4 text-center text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-brand-blue transition-all duration-300 hover:border-brand-blue hover:bg-brand-blue hover:text-brand-cream sm:w-auto sm:px-8 sm:text-[0.7rem] sm:tracking-[0.2em]"
+                className="inline-flex w-full items-center justify-center rounded-full border border-brand-blue/30 bg-transparent px-5 py-4 text-center text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-wine transition-all duration-300 hover:border-brand-blue hover:bg-wine hover:text-cream sm:w-auto sm:px-8 sm:text-[0.7rem] sm:tracking-[0.2em]"
               >
                 В доступе скоро
               </a>

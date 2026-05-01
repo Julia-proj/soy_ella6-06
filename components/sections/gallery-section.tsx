@@ -16,7 +16,7 @@ const IMAGES = [
 
 export function GallerySection() {
   return (
-    <section id="gallery" aria-label="Галерея встреч" className="bg-brand-cream py-16 text-brand-blue sm:py-24 lg:py-16">
+    <section id="gallery" aria-label="Галерея встреч" className="bg-cream py-16 text-charcoal sm:py-24 lg:py-16">
       <div className="site-shell mb-12 sm:mb-16 lg:mb-10">
         <motion.span
           initial={{ opacity: 0 }}
@@ -32,7 +32,7 @@ export function GallerySection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="mega-title mt-8 max-w-2xl font-display text-brand-blue sm:mt-10"
+          className="mega-title mt-8 max-w-2xl font-display text-wine sm:mt-10"
         >
           Наши встречи в кадре
         </motion.h2>
@@ -48,7 +48,7 @@ export function GallerySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, delay: 0.06 * index }}
-              className="group relative aspect-square overflow-hidden rounded-xl bg-brand-sand"
+              className="group relative aspect-square overflow-hidden rounded-xl bg-parchment"
             >
               <Image
                 src={img.src}

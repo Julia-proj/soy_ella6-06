@@ -79,7 +79,7 @@ export function NextEventSection() {
               >
                 Beauty
                 <br />
-                <span className="text-brand-yellow">Day.</span>
+                <span className="text-gold-muted">Day.</span>
               </motion.h2>
 
               {/* Mobile-only photo — after title, before metadata */}
@@ -110,19 +110,19 @@ export function NextEventSection() {
                 className="mt-8 flex flex-wrap gap-6 border-t border-white/10 pt-6 sm:gap-10 lg:mt-5 lg:pt-4"
               >
                 <div>
-                  <dt className="text-[0.6rem] font-medium uppercase tracking-[0.22em] text-brand-yellow sm:text-[0.65rem]">
+                  <dt className="text-[0.6rem] font-medium uppercase tracking-[0.22em] text-gold-muted sm:text-[0.65rem]">
                     Дата
                   </dt>
                   <dd className="mt-1 font-serif text-base text-brand-cream sm:text-lg lg:text-base">30 мая</dd>
                 </div>
                 <div>
-                  <dt className="text-[0.6rem] font-medium uppercase tracking-[0.22em] text-brand-yellow sm:text-[0.65rem]">
+                  <dt className="text-[0.6rem] font-medium uppercase tracking-[0.22em] text-gold-muted sm:text-[0.65rem]">
                     Локация
                   </dt>
                   <dd className="mt-1 font-serif text-base text-brand-cream sm:text-lg lg:text-base">Madrid</dd>
                 </div>
                 <div>
-                  <dt className="text-[0.6rem] font-medium uppercase tracking-[0.22em] text-brand-yellow sm:text-[0.65rem]">
+                  <dt className="text-[0.6rem] font-medium uppercase tracking-[0.22em] text-gold-muted sm:text-[0.65rem]">
                     Места
                   </dt>
                   <dd className="mt-1 font-serif text-base text-brand-cream sm:text-lg lg:text-base">Ограничены</dd>
@@ -137,7 +137,7 @@ export function NextEventSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.25 }}
             >
-              <span className="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-brand-yellow">
+              <span className="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gold-muted">
                 Участие включает
               </span>
               <p className="mt-3 text-base leading-relaxed text-brand-cream/75 lg:text-sm">
@@ -156,14 +156,14 @@ export function NextEventSection() {
               {/* Deadline */}
               <div className="mb-6 flex items-start gap-3">
                 <span
-                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand-yellow"
-                  style={{ boxShadow: "0 0 6px 1px rgba(247,229,158,0.5)" }}
+                  className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-muted"
+                  style={{ boxShadow: "0 0 6px 1px rgba(196,162,101,0.5)" }}
                 />
                 <div>
                   <p className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-white/60 sm:text-[0.7rem]">
                     Свободных мест осталось мало
                   </p>
-                  <p className="mt-0.5 font-display italic text-xl leading-tight text-brand-yellow sm:text-2xl">
+                  <p className="mt-0.5 font-display italic text-xl leading-tight text-gold-muted sm:text-2xl">
                     регистрация до 23 мая
                   </p>
                 </div>
@@ -205,10 +205,10 @@ export function NextEventSection() {
                     onClick={openBookingModal}
                     className="flex w-full items-center justify-between gap-4 rounded-full border border-cream/25 px-6 py-4 transition-all duration-300 hover:border-cream/40 hover:bg-white/[0.04] sm:px-7"
                   >
-                    <span className="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-brand-cream/70 sm:text-[0.72rem]">
+                    <span className="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-cream/70 sm:text-[0.72rem]">
                       Забронировать место
                     </span>
-                    <span className="shrink-0 font-sans text-lg font-semibold tabular-nums tracking-tight text-brand-cream">
+                    <span className="shrink-0 font-sans text-lg font-semibold tabular-nums tracking-tight text-cream">
                       50 €
                     </span>
                   </button>
@@ -229,17 +229,15 @@ export function NextEventSection() {
         </div>
       </div>
 
-      {/* ── BOTTOM ZONE — light noise ───────────────────────────── */}
-      <div className="relative overflow-hidden" style={{ background: "#a8cce6" }}>
-        {/* Grain — multiply on light bg = visible dark texture */}
+      {/* ── BOTTOM ZONE — parchment ───────────────────────────── */}
+      <div className="relative overflow-hidden bg-parchment">
+        {/* Subtle paper texture */}
         <div
           aria-hidden
-          className="absolute inset-0 pointer-events-none"
+          className="pointer-events-none absolute inset-0"
           style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")`,
             backgroundSize: "180px 180px",
-            opacity: 0.45,
-            mixBlendMode: "multiply",
           }}
         />
         <div className="site-shell relative z-10 py-12 md:py-16 xl:py-20">
@@ -249,7 +247,7 @@ export function NextEventSection() {
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.1 }}
           >
-            <h3 className="font-display text-3xl font-medium text-brand-ink sm:text-4xl md:text-5xl">
+            <h3 className="font-display text-3xl font-medium text-wine sm:text-4xl md:text-5xl">
               Почему стоит быть здесь
             </h3>
             <ul className="mt-12 grid gap-3 sm:mt-14 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
@@ -261,10 +259,10 @@ export function NextEventSection() {
                 { icon: Gift,     t: "Подарки партнеров",      d: "Каждая уходит с welcome box." },
                 { icon: Heart,    t: "Новые знакомства",       d: "Девушки, с которыми хочется дружить." },
               ].map((item) => (
-                <li key={item.t} className="border-t border-brand-ink/20 pb-2 pt-6 first:border-t-0 first:pt-0 sm:[&:nth-child(2)]:border-t-0 sm:[&:nth-child(2)]:pt-0 lg:[&:nth-child(3)]:border-t-0 lg:[&:nth-child(3)]:pt-0">
-                  <item.icon size={22} strokeWidth={1.5} className="text-brand-ink/40" />
-                  <h4 className="mt-3 font-serif text-xl font-medium text-brand-ink sm:text-2xl">{item.t}</h4>
-                  <p className="mt-2 text-sm leading-relaxed text-brand-ink/65 sm:text-base">{item.d}</p>
+                <li key={item.t} className="border-t border-wine/15 pb-2 pt-6 first:border-t-0 first:pt-0 sm:[&:nth-child(2)]:border-t-0 sm:[&:nth-child(2)]:pt-0 lg:[&:nth-child(3)]:border-t-0 lg:[&:nth-child(3)]:pt-0">
+                  <item.icon size={22} strokeWidth={1.5} className="text-gold-muted/70" />
+                  <h4 className="mt-3 font-serif text-xl font-medium text-wine sm:text-2xl">{item.t}</h4>
+                  <p className="mt-2 text-sm leading-relaxed text-charcoal/60 sm:text-base">{item.d}</p>
                 </li>
               ))}
             </ul>
