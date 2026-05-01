@@ -2,8 +2,6 @@
 
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Mic, Sparkles, Users, Wine, Gift, Heart } from "lucide-react"
-import { Spotlight } from "@/components/ui/spotlight-new"
 import { openBookingModal } from "@/lib/booking-events"
 
 export function NextEventSection() {
@@ -13,22 +11,8 @@ export function NextEventSection() {
       aria-label="Следующая встреча SOY ELLA"
       className="relative overflow-hidden"
     >
-      {/* ── TOP ZONE — black ───────────────────────────────────── */}
-      <div className="relative overflow-hidden bg-black text-brand-cream">
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          <Spotlight
-            gradientFirst="radial-gradient(68.54% 68.72% at 55.02% 31.46%, rgba(250, 246, 239, 0.16) 0, rgba(242, 199, 68, 0.08) 46%, rgba(242, 199, 68, 0) 78%)"
-            gradientSecond="radial-gradient(50% 50% at 50% 50%, rgba(247, 229, 158, 0.12) 0, rgba(247, 229, 158, 0.04) 78%, transparent 100%)"
-            gradientThird="radial-gradient(50% 50% at 50% 50%, rgba(45, 74, 111, 0.18) 0, rgba(45, 74, 111, 0.06) 76%, transparent 100%)"
-            translateY={-430}
-            width={520}
-            height={1180}
-            smallWidth={220}
-            duration={9}
-            xOffset={70}
-          />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(250,246,239,0.10),transparent_34%),linear-gradient(180deg,rgba(0,0,0,0)_0%,rgba(0,0,0,0.42)_100%)]" />
-        </div>
+      {/* ── TOP ZONE — premium dark blue ───────────────────────── */}
+      <div className="relative overflow-hidden text-brand-cream" style={{ backgroundColor: "#010816" }}>
         {/* Desktop: photo left, content right — full-bleed */}
         <div className="relative z-10 lg:grid lg:grid-cols-[50fr_50fr] lg:items-stretch xl:grid-cols-[52fr_48fr]">
 
@@ -229,46 +213,6 @@ export function NextEventSection() {
         </div>
       </div>
 
-      {/* ── BOTTOM ZONE — parchment ───────────────────────────── */}
-      <div className="relative overflow-hidden bg-parchment">
-        {/* Subtle paper texture */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")`,
-            backgroundSize: "180px 180px",
-          }}
-        />
-        <div className="site-shell relative z-10 py-12 md:py-16 xl:py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, delay: 0.1 }}
-          >
-            <h3 className="font-display text-3xl font-medium text-wine sm:text-4xl md:text-5xl">
-              Почему стоит быть здесь
-            </h3>
-            <ul className="mt-12 grid gap-3 sm:mt-14 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
-              {[
-                { icon: Mic,      t: "Экспертные выступления", d: "Спикеры уровня, короткие форматы, живые вопросы." },
-                { icon: Sparkles, t: "Beauty инновации",       d: "Новые подходы к уходу, волосам и коже." },
-                { icon: Users,    t: "Нетворкинг",             d: "Знакомства, которые остаются не на один вечер." },
-                { icon: Wine,     t: "Закуски и напитки",      d: "Премиальное меню от партнеров." },
-                { icon: Gift,     t: "Подарки партнеров",      d: "Каждая уходит с welcome box." },
-                { icon: Heart,    t: "Новые знакомства",       d: "Девушки, с которыми хочется дружить." },
-              ].map((item) => (
-                <li key={item.t} className="border-t border-wine/15 pb-2 pt-6 first:border-t-0 first:pt-0 sm:[&:nth-child(2)]:border-t-0 sm:[&:nth-child(2)]:pt-0 lg:[&:nth-child(3)]:border-t-0 lg:[&:nth-child(3)]:pt-0">
-                  <item.icon size={22} strokeWidth={1.5} className="text-gold-muted/70" />
-                  <h4 className="mt-3 font-serif text-xl font-medium text-wine sm:text-2xl">{item.t}</h4>
-                  <p className="mt-2 text-sm leading-relaxed text-charcoal/60 sm:text-base">{item.d}</p>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        </div>
-      </div>
     </section>
   )
 }

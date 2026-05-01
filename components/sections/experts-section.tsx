@@ -7,7 +7,7 @@ import { Instagram } from "lucide-react"
 const BODA_CARDS = [
   {
     name: "Palacio Santoña",
-    image: "/images/boda/boda-palacio.jpg",
+    image: "/images/boda/palacio-interior.jpg",
     text: "Интерьеры с историей, атмосфера старого Мадрида и пространство, которое сразу задаёт особое настроение вечера.",
     tag: "Venue",
     size: "wide" as const,
@@ -65,10 +65,11 @@ const BODA_CARDS = [
   {
     name: "Soy Ella & Keratin Madrid",
     image: "/images/boda/boda-keratin-madrid.jpg",
-    text: "Елена расскажет, как ухаживать за волосами, чтобы они росли, были блестящими, здоровыми и выглядели ухоженно каждый день.",
+    text: "Елена Александрова — со-организатор Soy Ella и эксперт по уходу за волосами. На встрече представит онлайн курс системы персонализированного  домашнего профессионального восстановления волос для девушек, которые ценят качество и время",
     tag: "Hair Care",
     size: "normal" as const,
     rotate: 1,
+    instagram: "https://www.instagram.com/curso_keratin_madrid/",
   },
   {
     name: "Leame Skin & Leame Beauty Zone",
@@ -220,27 +221,13 @@ export function ExpertsSection() {
         </motion.div>
       </div>
 
-      {/* ── CARDS — mobile horizontal scroll ─────── */}
-      <div className="relative z-10 pb-4 pt-2 lg:hidden">
-        <div className="flex gap-4 overflow-x-auto px-5 pb-6 [scroll-snap-type:x_mandatory] [-webkit-overflow-scrolling:touch]">
+      {/* ── CARDS — responsive grid ───────────────── */}
+      <div className="site-shell relative z-10 pb-16 pt-2">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-6">
           {BODA_CARDS.map((card, i) => (
             <div
               key={card.name}
-              className="w-[85vw] shrink-0 [scroll-snap-align:start]"
-            >
-              <InvitationCard card={{ ...card, rotate: 0 }} index={i} />
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* ── CARDS — desktop grid ──────────────────── */}
-      <div className="site-shell relative z-10 hidden pb-16 pt-2 lg:block">
-        <div className="grid grid-cols-3 gap-5 xl:gap-6">
-          {BODA_CARDS.map((card, i) => (
-            <div
-              key={card.name}
-              className={card.size === "wide" ? "col-span-2" : "col-span-1"}
+              className={card.size === "wide" ? "sm:col-span-2" : ""}
             >
               <InvitationCard card={card} index={i} />
             </div>

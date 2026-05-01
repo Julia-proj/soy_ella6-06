@@ -30,7 +30,7 @@ export function TestimonialsSection() {
     <section
       id="reviews"
       aria-label="Отзывы участниц"
-      className="section-pad bg-cream-dark text-charcoal"
+      className="section-pad bg-wine text-cream"
     >
       <div className="site-shell">
         <motion.span
@@ -38,7 +38,7 @@ export function TestimonialsSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="section-number section-number-dark"
+          className="section-number section-number-wine"
         >
           No. 07 / Отзывы
         </motion.span>
@@ -48,7 +48,7 @@ export function TestimonialsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.1 }}
-          className="mega-title mt-8 max-w-3xl font-display text-wine sm:mt-10"
+          className="mega-title mt-8 max-w-3xl font-display text-cream sm:mt-10"
         >
           Что говорят участницы
         </motion.h2>
@@ -66,7 +66,7 @@ export function TestimonialsSection() {
             >
               <span
                 aria-hidden
-                className="font-serif text-5xl leading-none text-wine/40 sm:text-6xl"
+                className="font-serif text-5xl leading-none text-cream/30 sm:text-6xl"
               >
                 &ldquo;
               </span>

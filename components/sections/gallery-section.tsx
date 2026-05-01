@@ -4,14 +4,14 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 
 const IMAGES = [
-  { src: "/soy-ella/gallery-speaker2.PNG", alt: "Участницы SOY ELLA" },
-  { src: "/soy-ella/gallery-speaker.PNG", alt: "Флористика встречи SOY ELLA" },
-  { src: "/soy-ella/gallery-communication.PNG", alt: "Букет и сервировка встречи" },
-  { src: "/soy-ella/salmon.jpeg", alt: "Премиальные закуски на встрече" },
-  { src: "/soy-ella/reir.JPG", alt: "Выступление эксперта SOY ELLA" },
-  { src: "/soy-ella/ambiente.jpeg", alt: "Выступление эксперта SOY ELLA" },
-  { src: "/soy-ella/vstrechi.jpg", alt: "Девушки на встрече SOY ELLA" },
-  { src: "/soy-ella/gallery-girls.jpg", alt: "Девушки на встрече SOY ELLA" },
+  { src: "/soy-ella/gallery-speaker2.PNG", alt: "Участницы SOY ELLA",           caption: "Участницы" },
+  { src: "/soy-ella/gallery-speaker.PNG",  alt: "Флористика встречи SOY ELLA",  caption: "Флористика" },
+  { src: "/soy-ella/gallery-communication.PNG", alt: "Букет и сервировка",      caption: "Детали" },
+  { src: "/soy-ella/salmon.jpeg",          alt: "Премиальные закуски",           caption: "Закуски" },
+  { src: "/soy-ella/reir.JPG",             alt: "Выступление эксперта SOY ELLA", caption: "Эксперты" },
+  { src: "/soy-ella/ambiente.jpeg",        alt: "Атмосфера встречи SOY ELLA",   caption: "Атмосфера" },
+  { src: "/soy-ella/vstrechi.jpg",         alt: "Девушки на встрече SOY ELLA",  caption: "Встреча" },
+  { src: "/soy-ella/gallery-girls.jpg",    alt: "Девушки на встрече SOY ELLA",  caption: "Знакомства" },
 ]
 
 export function GallerySection() {
@@ -38,26 +38,30 @@ export function GallerySection() {
         </motion.h2>
       </div>
 
-      {/* Gallery grid — uniform equal tiles */}
       <div className="site-shell">
-        <div className="grid grid-cols-2 gap-2 sm:gap-3 md:grid-cols-4 lg:gap-3">
-          {IMAGES.slice(0, 8).map((img, index) => (
+        <div className="grid grid-cols-2 gap-6 sm:gap-8 md:grid-cols-4">
+          {IMAGES.map((img, index) => (
             <motion.div
               key={img.src}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
+              viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.8, delay: 0.06 * index }}
-              className="group relative aspect-square overflow-hidden rounded-xl bg-parchment"
+              className="group"
+
             >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                  sizes="(min-width: 768px) 25vw, 50vw"
-                className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
-                style={{ filter: "saturate(0.94) contrast(1.02)" }}
-              />
+              <div className="bg-white p-2 pb-4 shadow-[0_6px_24px_rgba(92,26,27,0.10)] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-2 group-hover:shadow-[0_14px_40px_rgba(92,26,27,0.18)]">
+                <div className="relative aspect-square overflow-hidden">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    sizes="(min-width: 768px) 25vw, 50vw"
+                    className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
+                    style={{ filter: "saturate(0.92) contrast(1.02)" }}
+                  />
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

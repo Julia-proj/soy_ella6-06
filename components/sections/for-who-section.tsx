@@ -47,7 +47,7 @@ export function ForWhoSection() {
         </motion.p>
 
         {/* Grid */}
-        <ul className="mt-14 grid gap-px bg-cream/10 sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-14 grid gap-4 sm:mt-20 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
           {ITEMS.map((item, i) => (
             <motion.li
               key={item.n}
@@ -55,17 +55,15 @@ export function ForWhoSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.05 * i }}
-              className="group bg-wine p-7 transition-colors duration-500 hover:bg-wine-light sm:p-8 lg:p-7 xl:p-8"
+              className="invitation-card rounded-xl p-7 sm:p-8 lg:p-7 xl:p-8"
             >
-              <div className="flex items-start justify-between gap-4">
-                <span className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-gold-muted">
-                  {item.n}
-                </span>
-              </div>
-              <h3 className="section-h3 mt-5 font-serif text-cream">
+              <span className="font-display text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-gold-muted">
+                {item.n}
+              </span>
+              <h3 className="section-h3 mt-5 font-serif text-wine">
                 {item.t}
               </h3>
-              <p className="mt-4 text-base leading-relaxed text-cream/60 sm:text-lg">
+              <p className="mt-4 text-base leading-relaxed text-charcoal/60 sm:text-lg">
                 {item.d}
               </p>
             </motion.li>

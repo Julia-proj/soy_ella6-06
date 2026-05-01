@@ -51,7 +51,7 @@ export function FinalCtaSection() {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="mt-6 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-gold-muted sm:text-[0.7rem]"
         >
-          Beauty Day, 30 мая, мест ограничено
+          Beauty Day, 30 мая, места ограничены
         </motion.p>
 
         <motion.h2

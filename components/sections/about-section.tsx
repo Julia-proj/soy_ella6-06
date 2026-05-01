@@ -127,78 +127,68 @@ export function AboutSection() {
           </motion.p>
         </div>
 
-        {/* Image grid — 3-col band, fixed height */}
-        <div className="mt-14 grid grid-cols-2 gap-3 sm:mt-20 sm:gap-4 lg:grid-cols-3 lg:h-[300px] xl:h-[340px]">
-          {/* Left: organizers portrait — polaroid frame */}
+        {/* Image grid — editorial asymmetric layout */}
+        <div className="mt-14 grid grid-cols-2 gap-3 sm:mt-20 sm:gap-4 lg:h-[500px] lg:grid-cols-[3fr_2fr] lg:grid-rows-2 xl:h-[540px]">
+          {/* Left: founders — tall, spans 2 rows on desktop */}
           <motion.div
-            initial={{ opacity: 0, y: 30, rotate: -1.5 }}
-            whileInView={{ opacity: 1, y: 0, rotate: -1.5 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="polaroid col-span-2 cursor-pointer lg:col-span-1"
-            style={{ transform: "rotate(-1.5deg)" }}
+            className="group relative col-span-2 aspect-[3/2] cursor-pointer overflow-hidden lg:col-span-1 lg:row-span-2 lg:aspect-auto"
             onClick={() => setLightbox({ src: "/soy-ella/hero.jpg", alt: "Организаторы SOY ELLA" })}
           >
-            <div className="relative aspect-[3/2] overflow-hidden lg:aspect-[4/3]">
-              <Image
-                src="/soy-ella/hero.jpg"
-                alt="Организаторы SOY ELLA"
-                fill
-                sizes="(min-width: 1024px) 33vw, 100vw"
-                className="editorial-photo object-cover object-[center_38%] transition-transform duration-1000 hover:scale-[1.02]"
-              />
-              {/* Founders badge */}
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent pb-3 pl-3 pt-8">
-                <p className="text-[0.55rem] font-semibold uppercase tracking-[0.28em] text-gold-muted">
-                  Founders
-                </p>
-                <p className="mt-1 font-serif text-sm italic text-white/90">
-                  Silvia & Elena
-                </p>
-              </div>
+            <Image
+              src="/soy-ella/hero.jpg"
+              alt="Организаторы SOY ELLA"
+              fill
+              sizes="(min-width: 1024px) 60vw, 100vw"
+              className="editorial-photo object-cover object-[center_38%] transition-transform duration-1000 group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent pb-5 pl-5 pt-14 lg:pb-8 lg:pl-8">
+              <p className="text-[0.55rem] font-semibold uppercase tracking-[0.28em] text-gold-muted">
+                Founders
+              </p>
+              <p className="mt-1 font-serif text-sm italic text-white/90">
+                Silvia & Elena
+              </p>
             </div>
           </motion.div>
 
-          {/* Center: community — polaroid frame */}
+          {/* Right top: community */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="polaroid cursor-pointer"
-            style={{ transform: "rotate(1deg)" }}
+            className="group relative aspect-square cursor-pointer overflow-hidden lg:aspect-auto"
             onClick={() => setLightbox({ src: "/soy-ella/girls.jpg", alt: "Участницы SOY ELLA" })}
           >
-            <div className="relative aspect-square overflow-hidden">
-              <Image
-                src="/soy-ella/girls.jpg"
-                alt="Участницы SOY ELLA — женское комьюнити в Мадриде"
-                fill
-                sizes="(min-width: 1024px) 33vw, 100vw"
-                className="editorial-photo object-cover object-[center_25%] transition-transform duration-1000 hover:scale-[1.02]"
-              />
-            </div>
+            <Image
+              src="/soy-ella/girls.jpg"
+              alt="Участницы SOY ELLA — женское комьюнити в Мадриде"
+              fill
+              sizes="(min-width: 1024px) 40vw, 50vw"
+              className="editorial-photo object-cover object-[center_25%] transition-transform duration-1000 group-hover:scale-[1.03]"
+            />
           </motion.div>
 
-          {/* Right: detail — polaroid frame */}
+          {/* Right bottom: detail */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="polaroid cursor-pointer"
-            style={{ transform: "rotate(-0.8deg)" }}
+            className="group relative aspect-square cursor-pointer overflow-hidden lg:aspect-auto"
             onClick={() => setLightbox({ src: "/soy-ella/IMG_4749.PNG", alt: "Детали встречи SOY ELLA" })}
           >
-            <div className="relative aspect-square overflow-hidden">
-              <Image
-                src="/soy-ella/IMG_4749.PNG"
-                alt="Детали встречи SOY ELLA"
-                fill
-                sizes="(min-width: 1024px) 33vw, 100vw"
-                className="editorial-photo-warm object-cover object-center transition-transform duration-1000 hover:scale-[1.02]"
-              />
-            </div>
+            <Image
+              src="/soy-ella/IMG_4749.PNG"
+              alt="Детали встречи SOY ELLA"
+              fill
+              sizes="(min-width: 1024px) 40vw, 50vw"
+              className="editorial-photo-warm object-cover object-center transition-transform duration-1000 group-hover:scale-[1.03]"
+            />
           </motion.div>
         </div>
 
