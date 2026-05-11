@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { motion } from "framer-motion"
+import { EVENT_CONFIG } from "@/config/constants"
 
 export function HeroSection() {
   return (
@@ -25,7 +26,7 @@ export function HeroSection() {
       </div>
 
       {/* Content — centered */}
-      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-5 py-24 text-center">
+      <div className="relative z-10 flex min-h-[100svh] flex-col items-center justify-center px-5 py-24 text-center w-full max-w-full overflow-hidden">
 
         {/* City tag */}
         <motion.div
@@ -35,7 +36,7 @@ export function HeroSection() {
           className="mb-10 flex items-center gap-4 sm:mb-12"
         >
           <span className="h-px w-8 bg-gold-muted/60 sm:w-14" />
-          <span className="text-[0.58rem] font-medium uppercase tracking-[0.45em] text-gold-muted sm:text-[0.65rem]">
+          <span className="text-[0.58rem] font-medium uppercase tracking-[0.35em] text-gold-muted sm:text-[0.65rem] sm:tracking-[0.4em]" style={{ textShadow: "0 1px 3px rgba(0,0,0,0.4)" }}>
             Madrid · España
           </span>
           <span className="h-px w-8 bg-gold-muted/60 sm:w-14" />
@@ -46,14 +47,14 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          className="leading-none"
+          className="leading-none w-full"
         >
           <span
             className="block font-display uppercase text-white/90"
             style={{ 
-              fontSize: "clamp(5.5rem, 18vw, 13rem)", 
+              fontSize: "clamp(4rem, 15vw, 11rem)", 
               lineHeight: 0.85,
-              letterSpacing: "-0.02em",
+              letterSpacing: "-0.01em",
               fontWeight: 400,
             }}
           >
@@ -62,9 +63,9 @@ export function HeroSection() {
           <span
             className="block font-display uppercase text-white"
             style={{
-              fontSize: "clamp(7rem, 25vw, 18rem)",
+              fontSize: "clamp(5rem, 20vw, 15rem)",
               lineHeight: 0.83,
-              letterSpacing: "-0.02em",
+              letterSpacing: "-0.01em",
               fontWeight: 400,
             }}
           >
@@ -90,7 +91,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 1.0, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-7 max-w-[18rem] text-sm font-light leading-relaxed tracking-wide text-white/55 sm:max-w-xs sm:text-base lg:max-w-sm"
+          className="mt-7 max-w-[18rem] text-sm font-light leading-relaxed tracking-wide text-white/55 sm:max-w-xs sm:text-base lg:max-w-sm lg:text-[1.05rem]"
         >
           Закрытое женское комьюнити в Мадриде для девушек, которые выбирают рост, качество жизни и сильное окружение.
         </motion.p>
@@ -101,7 +102,7 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-12 inline-flex items-center gap-3 border border-white/20 px-9 py-4 text-[0.6rem] font-medium uppercase tracking-[0.35em] text-white/70 transition-all duration-500 hover:border-gold-muted/60 hover:text-gold-muted sm:mt-14"
+          className="mt-12 inline-flex items-center gap-3 border border-white/20 px-9 py-4 text-[0.6rem] font-medium uppercase tracking-[0.3em] text-white/70 transition-all duration-500 hover:border-gold-muted/60 hover:text-gold-muted sm:mt-14 sm:tracking-[0.35em]"
         >
           Следующая встреча
         </motion.a>
@@ -114,14 +115,14 @@ export function HeroSection() {
         transition={{ duration: 1, delay: 1.4 }}
         className="absolute inset-x-0 bottom-0 z-10 border-t border-white/10"
       >
-        <div className="site-shell flex items-center justify-between gap-4 py-5 sm:py-6">
-          <p className="text-[0.55rem] font-medium uppercase tracking-[0.16em] text-white/40 sm:text-[0.62rem] sm:tracking-[0.25em]">
-            30 мая next event
+        <div className="site-shell flex items-center justify-between gap-2 sm:gap-4 py-5 sm:py-6">
+          <p className="text-[0.6rem] font-medium uppercase tracking-[0.1em] text-white/40 sm:text-[0.65rem] sm:tracking-[0.15em]">
+            {EVENT_CONFIG.date}
           </p>
-          <p className="hidden text-[0.6rem] font-medium uppercase tracking-[0.25em] text-white/40 sm:block sm:text-[0.62rem]">
+          <p className="hidden text-[0.6rem] font-medium uppercase tracking-[0.1em] text-white/40 sm:block sm:text-[0.65rem] sm:tracking-[0.15em]">
             Beauty Day No. 04
           </p>
-          <p className="text-right text-[0.55rem] font-medium uppercase tracking-[0.16em] text-white/40 sm:text-[0.62rem] sm:tracking-[0.25em]">
+          <p className="text-right text-[0.6rem] font-medium uppercase tracking-[0.1em] text-white/40 sm:text-[0.65rem] sm:tracking-[0.15em]">
             Места ограничены
           </p>
         </div>

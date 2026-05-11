@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { motion } from "framer-motion"
+import { EVENT_CONFIG } from "@/config/constants"
 
 export function FinalCtaSection() {
   return (
@@ -49,9 +50,9 @@ export function FinalCtaSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="mt-6 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-gold-muted sm:text-[0.7rem]"
+          className="mt-6 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-gold-muted sm:text-[0.7rem]"
         >
-          Beauty Day, 30 мая, места ограничены
+          Beauty Day, {EVENT_CONFIG.date}, места ограничены
         </motion.p>
 
         <motion.h2
@@ -85,13 +86,13 @@ export function FinalCtaSection() {
             href="https://buy.stripe.com/8x29AT8nv9YfdK48WLdnW1U"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex w-full items-center justify-center rounded-full bg-wine px-5 py-4 text-center text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-cream transition-all duration-300 hover:bg-wine-light sm:w-auto sm:px-10 sm:text-[0.7rem] sm:tracking-[0.2em]"
+            className="inline-flex w-full items-center justify-center rounded-full bg-wine px-5 py-4 text-center text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-cream transition-all duration-300 hover:bg-wine-light sm:w-auto sm:px-10 sm:text-[0.7rem] sm:tracking-[0.18em]"
           >
             Оплатить участие, 180 €
           </a>
           <a
             href="#about"
-            className="inline-flex w-full items-center justify-center rounded-full border border-cream/30 bg-transparent px-5 py-4 text-center text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-cream transition-all duration-300 hover:bg-cream/10 sm:w-auto sm:px-10 sm:text-[0.7rem] sm:tracking-[0.2em]"
+            className="inline-flex w-full items-center justify-center rounded-full border border-cream/30 bg-transparent px-5 py-4 text-center text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-cream transition-all duration-300 hover:bg-cream/10 sm:w-auto sm:px-10 sm:text-[0.7rem] sm:tracking-[0.18em]"
           >
             Сначала узнать больше
           </a>

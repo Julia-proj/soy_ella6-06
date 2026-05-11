@@ -1,32 +1,19 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { TransitionLink } from "@/components/ui/transition-link"
-
-const LINKS = [
-  { href: "#about",   label: "О нас" },
-  { href: "#event",   label: "Встреча" },
-  { href: "#experts", label: "Эксперты" },
-  { href: "#gallery", label: "Галерея" },
-]
+import { NAVIGATION_LINKS } from "@/config/constants"
+import { useScroll } from "@/hooks/use-scroll"
+import { useBodyLock } from "@/hooks/use-body-lock"
 
 export function SiteNav() {
   const [open, setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const scrolled = useScroll(40)
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
-
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : ""
-    return () => { document.body.style.overflow = "" }
-  }, [open])
+  // Body scroll lock for mobile menu
+  useBodyLock(open)
 
   return (
     <>
@@ -52,8 +39,8 @@ export function SiteNav() {
 
           {/* Desktop links */}
           <nav aria-label="Основная навигация" className="hidden lg:flex">
-            <ul className="flex items-center gap-10 text-[0.65rem] font-medium uppercase tracking-[0.15em]">
-              {LINKS.map((link) => (
+            <ul className="flex items-center gap-10 text-[0.75rem] font-medium uppercase tracking-[0.12em] xl:text-[0.8rem]">
+              {NAVIGATION_LINKS.map((link) => (
                 <li key={link.href}>
                   <TransitionLink
                     href={link.href}
@@ -73,7 +60,7 @@ export function SiteNav() {
           <a
             href="#event"
             className={cn(
-              "hidden lg:inline-flex px-6 py-2.5 text-[0.6rem] font-semibold uppercase tracking-[0.12em] transition-all duration-300",
+              "hidden lg:inline-flex px-6 py-2.5 text-[0.7rem] font-semibold uppercase tracking-[0.1em] transition-all duration-300 xl:text-[0.75rem]",
               scrolled
                 ? "rounded-full border border-wine bg-wine text-cream hover:bg-wine-light hover:border-wine-light"
                 : "rounded-full border border-white/30 text-white hover:bg-white/10",
@@ -134,7 +121,7 @@ export function SiteNav() {
         </div>
 
         <ul className="mt-12">
-          {LINKS.map((link) => (
+          {NAVIGATION_LINKS.map((link) => (
             <li key={link.href}>
               <TransitionLink
                 href={link.href}
@@ -150,7 +137,7 @@ export function SiteNav() {
         <a
           href="#event"
           onClick={() => setOpen(false)}
-          className="mt-10 inline-flex w-full items-center justify-center rounded-full border border-wine bg-wine py-4 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-cream transition-colors hover:bg-wine-light hover:border-wine-light"
+          className="mt-10 inline-flex w-full items-center justify-center rounded-full border border-wine bg-wine py-4 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-cream transition-colors hover:bg-wine-light hover:border-wine-light"
         >
           Занять место
         </a>

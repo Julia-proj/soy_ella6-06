@@ -3,6 +3,7 @@ import { Manrope, Cormorant_Garamond, Playfair_Display } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { RevealController } from "@/components/reveal-controller"
 import { BookingModal } from "@/components/booking-modal"
+import { EVENT_CONFIG } from "@/config/constants"
 import "./globals.css"
 
 const cormorant = Cormorant_Garamond({
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "SOY ELLA — закрытое женское комьюнити в Мадриде",
   description:
-    "SOY ELLA — премиальное комьюнити для русскоговорящих женщин в Мадриде. Нетворкинг, рост, окружение уровня. Следующая встреча: BEAUTY DAY, 30 мая.",
+    `SOY ELLA — премиальное комьюнити для русскоговорящих женщин в Мадриде. Нетворкинг, рост, окружение уровня. Следующая встреча: BEAUTY DAY, ${EVENT_CONFIG.date}.`,
   applicationName: "SOY ELLA",
   alternates: {
     canonical: "/",
@@ -61,7 +62,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "SOY ELLA — Beauty Day в Мадриде",
-    description: "Премиальное женское комьюнити в Мадриде. Следующая встреча: BEAUTY DAY, 30 мая.",
+    description: `Премиальное женское комьюнити в Мадриде. Следующая встреча: BEAUTY DAY, ${EVENT_CONFIG.date}.`,
     images: [ogImage],
   },
 }

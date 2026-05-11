@@ -1,18 +1,12 @@
 "use client"
 
-import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 import { openBookingModal } from "@/lib/booking-events"
+import { EVENT_CONFIG } from "@/config/constants"
+import { useScroll } from "@/hooks/use-scroll"
 
 export function StickyMobileCta() {
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setVisible(window.scrollY > 500)
-    onScroll()
-    window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
+  const visible = useScroll(500)
 
   return (
     <div
@@ -24,14 +18,14 @@ export function StickyMobileCta() {
     >
       <div className="flex h-[72px] items-center justify-between gap-3 px-4 sm:px-6">
         <div className="min-w-0 flex flex-col gap-0.5">
-          <p className="text-[0.52rem] font-medium uppercase tracking-[0.2em] text-cream/50">
-            30 мая · Madrid
+          <p className="text-[0.65rem] font-medium uppercase tracking-[0.2em] text-cream/50 sm:text-[0.7rem]">
+            {EVENT_CONFIG.date} · {EVENT_CONFIG.location}
           </p>
           <p className="font-display italic text-[1.55rem] leading-none text-gold-muted">
             Beauty Day
           </p>
-          <p className="text-[0.52rem] font-medium uppercase tracking-[0.18em] text-gold-muted/60">
-            бронь до 23 мая
+          <p className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-gold-muted/60 sm:text-[0.7rem]">
+            бронь до {EVENT_CONFIG.registrationDeadline}
           </p>
         </div>
         <button

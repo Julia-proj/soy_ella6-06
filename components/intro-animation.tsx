@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from "react"
 import { motion, useReducedMotion } from "framer-motion"
+import { STORAGE_KEYS } from "@/config/constants"
+import { useStorage } from "@/hooks/use-storage"
+import { useBodyLock } from "@/hooks/use-body-lock"
 
 const EASE: [number, number, number, number] = [0.16, 1, 0.3, 1]
 const EXIT_EASE: [number, number, number, number] = [0.76, 0, 0.24, 1]
-const INTRO_KEY = "se-intro-v2"
 
 const GRAIN_SVG = `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`
 
@@ -28,42 +30,40 @@ export function IntroAnimation() {
   const [visible, setVisible] = useState(true)
   const [exiting, setExiting] = useState(false)
   const shouldReduceMotion = useReducedMotion()
+  const { getItem, setItem } = useStorage()
 
   useEffect(() => {
-    if (sessionStorage.getItem(INTRO_KEY)) {
+    if (getItem(STORAGE_KEYS.intro)) {
       setVisible(false)
       return
     }
 
-    document.body.style.overflow = "hidden"
-
     if (shouldReduceMotion) {
       const timer = setTimeout(() => {
-        sessionStorage.setItem(INTRO_KEY, "1")
+        setItem(STORAGE_KEYS.intro, "1")
         setVisible(false)
-        document.body.style.overflow = ""
       }, 450)
 
       return () => {
         clearTimeout(timer)
-        document.body.style.overflow = ""
       }
     }
 
     const timers = [
       setTimeout(() => setExiting(true), 1850),
       setTimeout(() => {
-        sessionStorage.setItem(INTRO_KEY, "1")
+        setItem(STORAGE_KEYS.intro, "1")
         setVisible(false)
-        document.body.style.overflow = ""
       }, 2800),
     ]
 
     return () => {
       timers.forEach(clearTimeout)
-      document.body.style.overflow = ""
     }
-  }, [shouldReduceMotion])
+  }, [shouldReduceMotion, getItem, setItem])
+
+  // Body scroll lock
+  useBodyLock(visible)
 
   if (!visible) return null
 

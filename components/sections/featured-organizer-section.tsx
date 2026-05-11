@@ -39,7 +39,7 @@ export function FeaturedOrganizerSection() {
                 className="editorial-photo object-cover object-top transition-transform duration-1000 hover:scale-[1.02]"
               />
             </div>
-            <p className="mt-4 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-warm-gray">
+            <p className="mt-4 text-[0.65rem] font-medium uppercase tracking-[0.15em] text-warm-gray">
               Елена Александрова · Founder · Keratin Madrid
             </p>
           </motion.div>
@@ -68,7 +68,7 @@ export function FeaturedOrganizerSection() {
                 href="https://www.instagram.com/curso_keratin_madrid/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full items-center justify-center rounded-full bg-wine px-5 py-4 text-center text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-cream transition-all duration-300 hover:bg-wine-light sm:w-auto sm:px-8 sm:text-[0.7rem] sm:tracking-[0.2em]"
+                className="inline-flex w-full items-center justify-center rounded-full bg-wine px-5 py-4 text-center text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-cream transition-all duration-300 hover:bg-wine-light sm:w-auto sm:px-8 sm:text-[0.7rem] sm:tracking-[0.18em]"
               >
                 Instagram Keratin Madrid
               </a>
@@ -76,7 +76,7 @@ export function FeaturedOrganizerSection() {
                 href="https://www.instagram.com/curso_keratin_madrid/"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex w-full items-center justify-center rounded-full border border-brand-blue/30 bg-transparent px-5 py-4 text-center text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-wine transition-all duration-300 hover:border-brand-blue hover:bg-wine hover:text-cream sm:w-auto sm:px-8 sm:text-[0.7rem] sm:tracking-[0.2em]"
+                className="inline-flex w-full items-center justify-center rounded-full border border-brand-blue/30 bg-transparent px-5 py-4 text-center text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-wine transition-all duration-300 hover:border-brand-blue hover:bg-wine hover:text-cream sm:w-auto sm:px-8 sm:text-[0.7rem] sm:tracking-[0.18em]"
               >
                 В доступе скоро
               </a>

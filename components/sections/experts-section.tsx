@@ -3,83 +3,8 @@
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { Instagram } from "lucide-react"
-
-const BODA_CARDS = [
-  {
-    name: "Palacio Santoña",
-    image: "/images/boda/palacio-interior.jpg",
-    text: "Интерьеры с историей, атмосфера старого Мадрида и пространство, которое сразу задаёт особое настроение вечера.",
-    tag: "Venue",
-    size: "wide" as const,
-    rotate: 0,
-  },
-  {
-    name: "Lera Ruma con Amazónico",
-    image: "/images/boda/boda-lera-amazonico.jpg",
-    text: "Живой разговор без фильтров о том, как строить личный бренд, проявляться и становиться заметной.",
-    tag: "Talk",
-    size: "normal" as const,
-    rotate: -1.5,
-  },
-  {
-    name: "DOT.BRAND",
-    image: "/images/boda/boda-dot-brand.jpg",
-    text: "Украинский бренд одежды с сильной эстетикой, выразительными силуэтами и вещами, которые подчёркивают характер женщины.",
-    tag: "Fashion",
-    size: "normal" as const,
-    rotate: 1,
-  },
-  {
-    name: "Christina Cosmetics",
-    image: "/images/boda/boda-christina-cosmetics.jpg",
-    text: "Beauty show о современных технологиях ухода за кожей лица, инновационной косметике и подходе к красоте через науку.",
-    tag: "Skincare",
-    size: "normal" as const,
-    rotate: -1,
-  },
-  {
-    name: "Matcha Atelier",
-    image: "/images/boda/boda-matcha-atelier.jpg",
-    text: "Дегустация matcha и знакомство с ароматной, более лёгкой альтернативой кофе.",
-    tag: "Experience",
-    size: "normal" as const,
-    rotate: 1.5,
-  },
-  {
-    name: "b·bar Madrid",
-    image: "/images/boda/boda-bbar-cocktails.jpg",
-    text: "Специально для события команда b·bar подготовит персональные коктейли Soy Ella. Бармен будет готовить их прямо на ваших глазах.",
-    tag: "Cocktails",
-    size: "wide" as const,
-    rotate: 0,
-    instagram: "https://www.instagram.com/b.bar.madrid?igsh=Y2F6NHAzc256aXkz",
-  },
-  {
-    name: "El presentador Andrey",
-    image: "/images/boda/boda-andrey.jpg",
-    text: "Атмосфера вечера, лёгкость, энергия и тот самый человек, который не даст событию превратиться в скучную лекцию.",
-    tag: "Host",
-    size: "normal" as const,
-    rotate: -1.5,
-  },
-  {
-    name: "Soy Ella & Keratin Madrid",
-    image: "/images/boda/boda-keratin-madrid.jpg",
-    text: "Елена Александрова — со-организатор Soy Ella и эксперт по уходу за волосами. На встрече представит онлайн курс системы персонализированного  домашнего профессионального восстановления волос для девушек, которые ценят качество и время",
-    tag: "Hair Care",
-    size: "normal" as const,
-    rotate: 1,
-    instagram: "https://www.instagram.com/curso_keratin_madrid/",
-  },
-  {
-    name: "Leame Skin & Leame Beauty Zone",
-    image: "/images/boda/boda-leame.jpg",
-    text: "Подарки для гостей и детали, которые делают вечер не просто полезным, а запоминающимся.",
-    tag: "Gifts",
-    size: "normal" as const,
-    rotate: -1,
-  },
-]
+import { BODA_CARDS } from "@/config/event-data"
+import { EVENT_CONFIG } from "@/config/constants"
 
 function InvitationCard({
   card,
@@ -109,7 +34,7 @@ function InvitationCard({
         />
         {/* Tag overlay */}
         <div className="absolute left-4 top-4">
-          <span className="inline-block bg-white/90 px-3 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-wine backdrop-blur-sm">
+          <span className="inline-block bg-white/90 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.18em] text-wine backdrop-blur-sm sm:text-[0.75rem]">
             {card.tag}
           </span>
         </div>
@@ -117,10 +42,10 @@ function InvitationCard({
 
       {/* Content */}
       <div className="p-6 sm:p-7">
-        <h3 className="font-serif text-xl font-medium leading-snug text-wine sm:text-2xl">
+        <h3 className="font-serif text-xl font-medium leading-snug text-wine sm:text-2xl lg:text-[1.3rem]">
           {card.name}
         </h3>
-        <p className="mt-3 text-sm leading-relaxed text-warm-gray sm:text-base">
+        <p className="mt-3 text-base leading-relaxed text-warm-gray sm:text-lg lg:text-[1.05rem]">
           {card.text}
         </p>
         {card.instagram && (
@@ -128,7 +53,7 @@ function InvitationCard({
             href={card.instagram}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-gold-muted transition-opacity hover:opacity-70"
+            className="mt-5 inline-flex items-center gap-2 text-[0.65rem] font-medium uppercase tracking-[0.15em] text-gold-muted transition-opacity hover:opacity-70"
           >
             <Instagram size={13} strokeWidth={1.5} />
             Instagram
@@ -160,7 +85,7 @@ export function ExpertsSection() {
       />
 
       {/* ── HEADER ─────────────────────────────────── */}
-      <div className="site-shell relative z-10 pb-10 pt-16 sm:pt-20">
+      <div className="site-shell relative z-10 pb-10 pt-16 sm:pt-20 md:pb-12 lg:pb-10">
         <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -176,9 +101,9 @@ export function ExpertsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1.1, delay: 0.1 }}
-          className="mt-8 font-display italic sm:mt-10"
+          className="mt-6 sm:mt-8 lg:mt-8 font-display italic"
           style={{
-            fontSize: "clamp(3rem, 7vw, 5.5rem)",
+            fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
             lineHeight: 1,
             letterSpacing: "-0.01em",
             fontWeight: 400,
@@ -193,7 +118,7 @@ export function ExpertsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.2 }}
-          className="mt-5 font-serif italic text-xl text-cream/70 sm:text-2xl"
+          className="mt-4 sm:mt-5 font-serif italic text-xl text-cream/70 sm:text-2xl"
         >
           не просто встреча, а beauty experience
         </motion.p>
@@ -203,9 +128,9 @@ export function ExpertsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.9, delay: 0.3 }}
-          className="mt-6 max-w-2xl text-base leading-relaxed text-cream/55 sm:text-lg"
+          className="mt-5 sm:mt-6 max-w-2xl text-base leading-relaxed text-cream/55 sm:text-lg lg:text-[1.1rem]"
         >
-          30 мая в Palacio Santoña мы собираем женщин, бренды и экспертов
+          {EVENT_CONFIG.date} в {EVENT_CONFIG.venue} мы собираем женщин, бренды и экспертов
           в формате, где красота, стиль, нетворкинг и вдохновение соединяются в один вечер.
         </motion.p>
 
@@ -215,19 +140,19 @@ export function ExpertsSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="divider-ornament mt-12 max-w-xs text-gold-muted"
+          className="divider-ornament mt-10 sm:mt-12 lg:mt-10 max-w-xs text-gold-muted"
         >
           <span className="text-lg">◆</span>
         </motion.div>
       </div>
 
       {/* ── CARDS — responsive grid ───────────────── */}
-      <div className="site-shell relative z-10 pb-16 pt-2">
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-6">
+      <div className="site-shell relative z-10 pb-12 pt-2 sm:pb-16">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-6 2xl:grid-cols-3">
           {BODA_CARDS.map((card, i) => (
             <div
               key={card.name}
-              className={card.size === "wide" ? "sm:col-span-2" : ""}
+              className={card.size === "wide" ? "sm:col-span-2 lg:col-span-2 xl:col-span-2" : ""}
             >
               <InvitationCard card={card} index={i} />
             </div>
@@ -236,7 +161,7 @@ export function ExpertsSection() {
       </div>
 
       {/* ── EVENT INFO CARD ───────────────────────── */}
-      <div className="site-shell relative z-10 pb-20 pt-8 sm:pb-24">
+      <div className="site-shell relative z-10 pb-20 pt-6 sm:pb-24 sm:pt-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -259,14 +184,14 @@ export function ExpertsSection() {
             </p>
 
             <div className="mt-6 space-y-2">
-              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-wine/60">
-                30 мая · 17:00
+              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.2em] text-wine/60 sm:text-[0.8rem]">
+                {EVENT_CONFIG.date} · {EVENT_CONFIG.time}
               </p>
-              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-wine/60">
-                Palacio Santoña
+              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.2em] text-wine/60 sm:text-[0.8rem]">
+                {EVENT_CONFIG.venue}
               </p>
-              <p className="text-[0.6rem] text-warm-gray">
-                C. de las Huertas, 13, Centro, 28012 Madrid
+              <p className="text-[0.7rem] text-warm-gray sm:text-[0.75rem]">
+                {EVENT_CONFIG.venueAddress}
               </p>
             </div>
 
@@ -277,7 +202,7 @@ export function ExpertsSection() {
 
             <a
               href="#event"
-              className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-wine px-8 py-3.5 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-cream transition-all duration-300 hover:bg-wine-light"
+              className="inline-flex min-h-[44px] items-center justify-center rounded-full bg-wine px-8 py-3.5 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-cream transition-all duration-300 hover:bg-wine-light"
             >
               Забронировать место
             </a>

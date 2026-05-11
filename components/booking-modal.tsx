@@ -5,13 +5,11 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion"
 import { X } from "lucide-react"
 import { useIsMobile } from "@/components/ui/use-mobile"
 import { BOOKING_OPEN_EVENT } from "@/lib/booking-events"
+import { PAYMENT_CONFIG, STORAGE_KEYS, EVENT_CONFIG } from "@/config/constants"
+import { useStorage } from "@/hooks/use-storage"
+import { useBodyLock } from "@/hooks/use-body-lock"
 
-const BOOKING_KEY = "se-booking-v1"
-const INTRO_KEY = "se-intro-v2"
 const EASE = [0.16, 1, 0.3, 1] as const
-
-const STRIPE_DEPOSIT = "https://buy.stripe.com/00wcN56fn7Q7eO8c8XdnW1T"
-const STRIPE_FULL = "https://buy.stripe.com/8x29AT8nv9YfdK48WLdnW1U"
 
 export function BookingModal() {
   const [open, setOpen] = useState(false)
@@ -20,6 +18,7 @@ export function BookingModal() {
   const shouldReduceMotion = useReducedMotion()
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const innerTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const { setItem, getItem } = useStorage()
 
   useEffect(() => {
     setMounted(true)
@@ -27,21 +26,13 @@ export function BookingModal() {
 
   // Auto-open after delay, respecting intro animation timing
   useEffect(() => {
-    try {
-      if (sessionStorage.getItem(BOOKING_KEY)) return
-    } catch {
-      return
-    }
+    if (getItem(STORAGE_KEYS.booking)) return
 
     const outerTimer = setTimeout(() => {
-      try {
-        if (!sessionStorage.getItem(INTRO_KEY)) {
-          // First visit: intro animation still running, wait for it to finish
-          innerTimerRef.current = setTimeout(() => setOpen(true), 600)
-        } else {
-          setOpen(true)
-        }
-      } catch {
+      if (!getItem(STORAGE_KEYS.intro)) {
+        // First visit: intro animation still running, wait for it to finish
+        innerTimerRef.current = setTimeout(() => setOpen(true), 600)
+      } else {
         setOpen(true)
       }
     }, 2500)
@@ -50,7 +41,12 @@ export function BookingModal() {
       clearTimeout(outerTimer)
       if (innerTimerRef.current) clearTimeout(innerTimerRef.current)
     }
-  }, [])
+  }, [getItem])
+
+  const close = useCallback(() => {
+    setItem(STORAGE_KEYS.booking, "1")
+    setOpen(false)
+  }, [setItem])
 
   // Open via custom event (from buttons anywhere on the page)
   useEffect(() => {
@@ -60,12 +56,7 @@ export function BookingModal() {
   }, [])
 
   // Body scroll lock
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : ""
-    return () => {
-      document.body.style.overflow = ""
-    }
-  }, [open])
+  useBodyLock(open)
 
   // Focus close button when modal opens
   useEffect(() => {
@@ -80,16 +71,7 @@ export function BookingModal() {
     }
     window.addEventListener("keydown", handler)
     return () => window.removeEventListener("keydown", handler)
-  }, [open]) // eslint-disable-line react-hooks/exhaustive-deps
-
-  const close = useCallback(() => {
-    try {
-      sessionStorage.setItem(BOOKING_KEY, "1")
-    } catch {
-      // Private browsing may block sessionStorage
-    }
-    setOpen(false)
-  }, [])
+  }, [open, close])
 
   if (!mounted) return null
 
@@ -170,8 +152,8 @@ export function BookingModal() {
               </button>
 
               {/* Deadline badge */}
-              <span className="inline-flex items-center rounded-full border border-brand-yellow px-3 py-1 text-[0.58rem] font-semibold uppercase tracking-[0.2em] text-brand-taupe">
-                до 23 мая
+              <span className="inline-flex items-center rounded-full border border-brand-yellow px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.2em] text-brand-taupe sm:text-[0.75rem]">
+                до {EVENT_CONFIG.registrationDeadline}
               </span>
 
               {/* Title */}
@@ -180,8 +162,8 @@ export function BookingModal() {
               </h2>
 
               {/* Date */}
-              <p className="mt-1.5 text-[0.65rem] font-medium uppercase tracking-[0.2em] text-brand-taupe sm:mt-2">
-                30 мая · Мадрид
+              <p className="mt-1.5 text-[0.75rem] font-medium uppercase tracking-[0.2em] text-brand-taupe sm:mt-2 sm:text-[0.8rem]">
+                {EVENT_CONFIG.date} · {EVENT_CONFIG.location}
               </p>
 
               {/* Body */}
@@ -194,7 +176,7 @@ export function BookingModal() {
 
               {/* Option 1 — Deposit, primary */}
               <a
-                href={STRIPE_DEPOSIT}
+                href={PAYMENT_CONFIG.stripeDepositUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 flex w-full items-center justify-between gap-3 rounded-full bg-brand-ink px-4 py-3.5 text-brand-cream transition-colors hover:bg-[#2a2622] sm:mt-5 sm:gap-4 sm:px-5 sm:py-4"
@@ -202,10 +184,10 @@ export function BookingModal() {
                 <span className="min-w-0 text-[0.65rem] font-bold uppercase tracking-[0.2em]">
                   Резервация места
                 </span>
-                <span className="shrink-0 font-sans text-xl font-semibold tabular-nums tracking-tight">50 €</span>
+                <span className="shrink-0 font-sans text-xl font-semibold tabular-nums tracking-tight">{PAYMENT_CONFIG.depositAmount} €</span>
               </a>
               <p className="mt-2 px-1 text-[0.58rem] text-brand-taupe/70">
-                остаток 130 € оплачивается позже
+                остаток {PAYMENT_CONFIG.remainingAmount} € оплачивается позже
               </p>
 
               {/* Separator */}
@@ -217,7 +199,7 @@ export function BookingModal() {
 
               {/* Option 2 — Full payment, secondary */}
               <a
-                href={STRIPE_FULL}
+                href={PAYMENT_CONFIG.stripeFullPaymentUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex w-full items-center justify-between gap-3 rounded-full border border-brand-ink/15 px-4 py-3 text-brand-ink/75 transition-colors hover:border-brand-ink/30 hover:text-brand-ink sm:gap-4 sm:px-5 sm:py-3.5"
@@ -225,12 +207,12 @@ export function BookingModal() {
                 <span className="min-w-0 text-[0.65rem] font-medium uppercase tracking-[0.2em]">
                   Полная оплата
                 </span>
-                <span className="shrink-0 font-sans text-lg font-semibold tabular-nums tracking-tight">180 €</span>
+                <span className="shrink-0 font-sans text-lg font-semibold tabular-nums tracking-tight">{PAYMENT_CONFIG.fullPaymentAmount} €</span>
               </a>
 
               {/* Footer */}
-              <p className="mt-4 text-center text-[0.55rem] uppercase tracking-[0.18em] text-brand-ink/25 sm:mt-5">
-                Оплата доступна до 23 мая · Stripe · Безопасная оплата
+              <p className="mt-4 text-center text-[0.65rem] uppercase tracking-[0.18em] text-brand-ink/25 sm:mt-5 sm:text-[0.7rem]">
+                Оплата доступна до {EVENT_CONFIG.registrationDeadline} · Stripe · Безопасная оплата
               </p>
             </div>
           </motion.div>

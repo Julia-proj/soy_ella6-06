@@ -57,10 +57,10 @@ export function ForWhoSection() {
               transition={{ duration: 0.8, delay: 0.05 * i }}
               className="invitation-card rounded-xl p-7 sm:p-8 lg:p-7 xl:p-8"
             >
-              <span className="font-display text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-gold-muted">
+              <span className="font-display text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-gold-muted">
                 {item.n}
               </span>
-              <h3 className="section-h3 mt-5 font-serif text-wine">
+              <h3 className="section-h3 mt-5 font-serif text-wine lg:text-[1.3rem]">
                 {item.t}
               </h3>
               <p className="mt-4 text-base leading-relaxed text-charcoal/60 sm:text-lg">

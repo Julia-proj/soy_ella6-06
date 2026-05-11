@@ -76,7 +76,7 @@ export function AboutSection() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="section-number section-number-plain-dark"
+          className="section-number section-number-dark"
         >
           No. 01 / О Soy Ella
         </motion.span>
@@ -87,9 +87,9 @@ export function AboutSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="mt-10 max-w-3xl sm:mt-12"
+          className="mt-10 max-w-3xl sm:mt-12 lg:mt-14"
         >
-          <p className="font-serif text-2xl italic text-charcoal/50 sm:text-3xl md:text-4xl">
+          <p className="font-serif text-2xl italic text-charcoal/50 sm:text-3xl md:text-4xl lg:text-[2.5rem]">
             Не массовый нетворкинг. Качество важнее количества.
           </p>
         </motion.blockquote>
@@ -128,7 +128,7 @@ export function AboutSection() {
         </div>
 
         {/* Image grid — editorial asymmetric layout */}
-        <div className="mt-14 grid grid-cols-2 gap-3 sm:mt-20 sm:gap-4 lg:h-[500px] lg:grid-cols-[3fr_2fr] lg:grid-rows-2 xl:h-[540px]">
+        <div className="mt-14 grid grid-cols-2 gap-3 sm:mt-20 sm:gap-4 lg:mt-16 lg:h-[480px] lg:grid-cols-[3fr_2fr] lg:grid-rows-2 xl:h-[520px] 2xl:h-[560px]">
           {/* Left: founders — tall, spans 2 rows on desktop */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -146,7 +146,7 @@ export function AboutSection() {
               className="editorial-photo object-cover object-[center_38%] transition-transform duration-1000 group-hover:scale-[1.03]"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent pb-5 pl-5 pt-14 lg:pb-8 lg:pl-8">
-              <p className="text-[0.55rem] font-semibold uppercase tracking-[0.28em] text-gold-muted">
+              <p className="text-[0.55rem] font-semibold uppercase tracking-[0.2em] text-gold-muted">
                 Founders
               </p>
               <p className="mt-1 font-serif text-sm italic text-white/90">
@@ -193,7 +193,7 @@ export function AboutSection() {
         </div>
 
         {/* Principles */}
-        <ul className="mt-16 grid border-t border-charcoal/10 sm:mt-24 sm:grid-cols-3">
+        <ul className="mt-16 grid border-t border-charcoal/10 sm:mt-24 lg:mt-20 sm:grid-cols-3">
           {PRINCIPLES.map((item, i) => (
             <motion.li
               key={item.n}
@@ -203,7 +203,7 @@ export function AboutSection() {
               transition={{ duration: 0.8, delay: 0.1 * i }}
               className="border-b border-charcoal/10 py-10 sm:border-b-0 sm:border-r sm:border-charcoal/10 sm:px-8 sm:py-14 sm:last:border-r-0 md:px-10"
             >
-              <span className="text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-gold-muted">
+              <span className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-gold-muted">
                 {item.n}
               </span>
               <h3 className="section-h3 mt-5 font-serif text-wine">

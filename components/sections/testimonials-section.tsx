@@ -76,10 +76,10 @@ export function TestimonialsSection() {
                 </p>
               </blockquote>
               <footer className="mt-6 border-t border-wine/10 pt-5">
-                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-wine">
+                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.15em] text-wine">
                   {review.name}
                 </p>
-                <p className="mt-1 text-[0.6rem] uppercase tracking-[0.14em] text-warm-gray">
+                <p className="mt-1 text-[0.6rem] uppercase tracking-[0.12em] text-warm-gray">
                   {review.role}
                 </p>
               </footer>

@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { openBookingModal } from "@/lib/booking-events"
+import { PAYMENT_CONFIG, EVENT_CONFIG } from "@/config/constants"
 
 export function NextEventSection() {
   return (
@@ -94,22 +95,22 @@ export function NextEventSection() {
                 className="mt-8 flex flex-wrap gap-6 border-t border-white/10 pt-6 sm:gap-10 lg:mt-5 lg:pt-4"
               >
                 <div>
-                  <dt className="text-[0.6rem] font-medium uppercase tracking-[0.22em] text-gold-muted sm:text-[0.65rem]">
+                  <dt className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-gold-muted sm:text-[0.7rem]">
                     Дата
                   </dt>
-                  <dd className="mt-1 font-serif text-base text-brand-cream sm:text-lg lg:text-base">30 мая</dd>
+                  <dd className="mt-1 font-serif text-lg text-brand-cream sm:text-xl lg:text-[1.1rem]">{EVENT_CONFIG.date}</dd>
                 </div>
                 <div>
-                  <dt className="text-[0.6rem] font-medium uppercase tracking-[0.22em] text-gold-muted sm:text-[0.65rem]">
+                  <dt className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-gold-muted sm:text-[0.7rem]">
                     Локация
                   </dt>
-                  <dd className="mt-1 font-serif text-base text-brand-cream sm:text-lg lg:text-base">Madrid</dd>
+                  <dd className="mt-1 font-serif text-lg text-brand-cream sm:text-xl lg:text-[1.1rem]">Madrid</dd>
                 </div>
                 <div>
-                  <dt className="text-[0.6rem] font-medium uppercase tracking-[0.22em] text-gold-muted sm:text-[0.65rem]">
+                  <dt className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-gold-muted sm:text-[0.7rem]">
                     Места
                   </dt>
-                  <dd className="mt-1 font-serif text-base text-brand-cream sm:text-lg lg:text-base">Ограничены</dd>
+                  <dd className="mt-1 font-serif text-lg text-brand-cream sm:text-xl lg:text-[1.1rem]">Ограничены</dd>
                 </div>
               </motion.dl>
             </div>
@@ -121,10 +122,10 @@ export function NextEventSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.25 }}
             >
-              <span className="text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-gold-muted">
+              <span className="text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-gold-muted">
                 Участие включает
               </span>
-              <p className="mt-3 text-base leading-relaxed text-brand-cream/75 lg:text-sm">
+              <p className="mt-3 text-lg leading-relaxed text-brand-cream/75 lg:text-[1.05rem]">
                 Welcome box, премиальные закуски и напитки, все выступления экспертов, нетворкинг и знакомства с участницами.
               </p>
             </motion.div>
@@ -144,11 +145,11 @@ export function NextEventSection() {
                   style={{ boxShadow: "0 0 6px 1px rgba(196,162,101,0.5)" }}
                 />
                 <div>
-                  <p className="text-[0.65rem] font-medium uppercase tracking-[0.18em] text-white/60 sm:text-[0.7rem]">
+                  <p className="text-[0.75rem] font-medium uppercase tracking-[0.15em] text-white/60 sm:text-[0.8rem]">
                     Свободных мест осталось мало
                   </p>
                   <p className="mt-0.5 font-display italic text-xl leading-tight text-gold-muted sm:text-2xl">
-                    регистрация до 23 мая
+                    регистрация до {EVENT_CONFIG.registrationDeadline}
                   </p>
                 </div>
               </div>
@@ -156,7 +157,7 @@ export function NextEventSection() {
               <div className="space-y-3">
                 {/* Primary — полная оплата */}
                 <a
-                  href="https://buy.stripe.com/8x29AT8nv9YfdK48WLdnW1U"
+                  href={PAYMENT_CONFIG.stripeFullPaymentUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative flex w-full items-center justify-between gap-4 overflow-hidden rounded-full bg-wine px-6 py-4 transition-all duration-300 hover:scale-[1.015] hover:bg-wine-light hover:shadow-[0_8px_32px_rgba(92,26,27,0.35)] active:scale-[0.99] sm:px-7"
@@ -174,11 +175,11 @@ export function NextEventSection() {
                       delay: 2,
                     }}
                   />
-                  <span className="text-[0.68rem] font-bold uppercase tracking-[0.18em] text-cream sm:text-[0.72rem]">
+                  <span className="text-[0.68rem] font-bold uppercase tracking-[0.15em] text-cream sm:text-[0.72rem]">
                     Оплатить участие
                   </span>
                   <span className="shrink-0 font-sans text-lg font-semibold tabular-nums tracking-tight text-cream">
-                    180 €
+                    {PAYMENT_CONFIG.fullPaymentAmount} €
                   </span>
                 </a>
 
@@ -189,7 +190,7 @@ export function NextEventSection() {
                     onClick={openBookingModal}
                     className="flex w-full items-center justify-between gap-4 rounded-full border border-cream/25 px-6 py-4 transition-all duration-300 hover:border-cream/40 hover:bg-white/[0.04] sm:px-7"
                   >
-                    <span className="text-[0.68rem] font-medium uppercase tracking-[0.18em] text-cream/70 sm:text-[0.72rem]">
+                    <span className="text-[0.68rem] font-medium uppercase tracking-[0.15em] text-cream/70 sm:text-[0.72rem]">
                       Забронировать место
                     </span>
                     <span className="shrink-0 font-sans text-lg font-semibold tabular-nums tracking-tight text-cream">
@@ -197,12 +198,12 @@ export function NextEventSection() {
                     </span>
                   </button>
                   <p className="mt-2 px-1 text-[0.58rem] leading-relaxed text-white/30">
-                    Фиксирует место. Остаток 130 € оплатишь ближе к дате.
+                    Фиксирует место. Остаток {PAYMENT_CONFIG.remainingAmount} € оплатишь ближе к дате.
                   </p>
                 </div>
               </div>
 
-              <p className="mt-5 text-center text-[0.52rem] font-medium uppercase tracking-[0.18em] text-white/35">
+              <p className="mt-5 text-center text-[0.65rem] font-medium uppercase tracking-[0.18em] text-white/35 sm:text-[0.7rem]">
                 Stripe · Безопасная оплата · Оплата в €
               </p>
             </motion.div>

@@ -1,12 +1,6 @@
 import { Instagram, MapPin } from "lucide-react"
 import { TransitionLink } from "@/components/ui/transition-link"
-
-const NAV = [
-  { href: "#about",   label: "О нас" },
-  { href: "#event",   label: "Встреча" },
-  { href: "#experts", label: "Эксперты" },
-  { href: "#gallery", label: "Галерея" },
-]
+import { NAVIGATION_LINKS, SOCIAL_LINKS } from "@/config/constants"
 
 export function SiteFooter() {
   return (
@@ -31,7 +25,7 @@ export function SiteFooter() {
               Навигация
             </p>
             <ul className="mt-6 space-y-3 text-base text-cream/50">
-              {NAV.map((link) => (
+              {NAVIGATION_LINKS.map((link) => (
                 <li key={link.href}>
                   <TransitionLink href={link.href} className="transition-colors hover:text-cream">
                     {link.label}
@@ -48,7 +42,7 @@ export function SiteFooter() {
             <ul className="mt-6 space-y-3 text-base text-cream/50">
               <li>
                 <a
-                  href="https://www.instagram.com/soy_ella.madrid/"
+                  href={SOCIAL_LINKS.instagram}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 transition-colors hover:text-cream"
